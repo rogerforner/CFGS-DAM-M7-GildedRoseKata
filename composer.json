@@ -1,0 +1,20 @@
+{
+    "name": "rogerforner/gilded-rose-kata-php",
+    "type": "project",
+    "require": {
+        "phpspec/phpspec": "^3.1",
+        "crysalead/kahlan": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roger Forner Fabre",
+            "email": "rogerforne@iesebre.com"
+        }
+    ]
+}
