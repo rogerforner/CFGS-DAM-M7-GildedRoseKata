@@ -17,8 +17,10 @@ class GildedRoseSpec extends ObjectBehavior
 
     function it_updates_normal_items_before_sell_date()
     {
-        $this->beConstructedWith('normal',10,5);
+        $this->beConstructedThrough('of',['normal',10,5]);
+//        $item = GildedRose::of('normal',10,5);
         $this->tick();
+//        $this->assertEquals($item->quality,9);
         $this->quality->shouldBe(9);
         $this->sellIn->shouldBe(4);
     }
