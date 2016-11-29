@@ -49,6 +49,16 @@ class GildedRose
             }
         } elseif ($this->name == 'Sulfuras, Hand of Ragnaros'){
 
+        } elseif ($this->name == 'Conjured Mana Cake'){
+            if ($this->quality > 0)
+                $this->quality = $this->quality - 2;
+
+            $this->sellIn = $this->sellIn - 1;
+
+            if ($this->sellIn < 0) {
+                if ($this->quality > 0)
+                    $this->quality = $this->quality - 2;
+            }
         }
         else {
             if ($this->quality > 0)

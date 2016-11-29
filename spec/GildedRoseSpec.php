@@ -106,25 +106,25 @@ class GildedRoseSpec extends ObjectBehavior
 
     function it_updates_Sulfuras_items_before_the_sell_date()
     {
-        $this->beConstructedWith('Sulfuras, Hand of Ragnaros',10,5);
+        $this->beConstructedWith('Sulfuras, Hand of Ragnaros',80,5);
         $this->tick();
-        $this->quality->shouldBe(10);
+        $this->quality->shouldBe(80);
         $this->sellIn->shouldBe(5);
     }
 
     function it_updates_Sulfuras_items_on_the_sell_date()
     {
-        $this->beConstructedWith('Sulfuras, Hand of Ragnaros',10,0);
+        $this->beConstructedWith('Sulfuras, Hand of Ragnaros',80,0);
         $this->tick();
-        $this->quality->shouldBe(10);
+        $this->quality->shouldBe(80);
         $this->sellIn->shouldBe(0);
     }
 
     function it_updates_Sulfuras_items_after_the_sell_date()
     {
-        $this->beConstructedWith('Sulfuras, Hand of Ragnaros',10,-1);
+        $this->beConstructedWith('Sulfuras, Hand of Ragnaros',80,-1);
         $this->tick();
-        $this->quality->shouldBe(10);
+        $this->quality->shouldBe(80);
         $this->sellIn->shouldBe(-1);
     }
 
@@ -199,5 +199,54 @@ class GildedRoseSpec extends ObjectBehavior
         $this->quality->shouldBe(0);
         $this->sellIn->shouldBe(-2);
     }
+
+    function it_updates_Conjured_items_before_the_sell_date()
+    {
+        $this->beConstructedWith('Conjured Mana Cake',10,10);
+        $this->tick();
+        $this->quality->shouldBe(8);
+        $this->sellIn->shouldBe(9);
+    }
+
+    function it_updates_Conjured_items_at_zero_quality()
+    {
+        $this->beConstructedWith('Conjured Mana Cake',0,10);
+        $this->tick();
+        $this->quality->shouldBe(0);
+        $this->sellIn->shouldBe(9);
+    }
+
+    function it_updates_Conjured_items_on_the_sell_date()
+    {
+        $this->beConstructedWith('Conjured Mana Cake',10,0);
+        $this->tick();
+        $this->quality->shouldBe(6);
+        $this->sellIn->shouldBe(-1);
+    }
+
+    function it_updates_Conjured_items_on_the_sell_date_at_0_quality()
+    {
+        $this->beConstructedWith('Conjured Mana Cake',0,0);
+        $this->tick();
+        $this->quality->shouldBe(0);
+        $this->sellIn->shouldBe(-1);
+    }
+
+    function it_updates_Conjured_items_after_the_sell_date()
+    {
+        $this->beConstructedWith('Conjured Mana Cake',10,-10);
+        $this->tick();
+        $this->quality->shouldBe(6);
+        $this->sellIn->shouldBe(-11);
+    }
+
+    function it_updates_Conjured_items_after_the_sell_date_at_0_quality()
+    {
+        $this->beConstructedWith('Conjured Mana Cake',0,-10);
+        $this->tick();
+        $this->quality->shouldBe(0);
+        $this->sellIn->shouldBe(-11);
+    }
+
 
 }
