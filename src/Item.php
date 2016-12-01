@@ -9,6 +9,10 @@
 namespace App;
 
 
+/**
+ * Class Item
+ * @package App
+ */
 class Item
 {
 
@@ -16,6 +20,11 @@ class Item
 
     public $sellIn;
 
+    /**
+     * Item constructor.
+     * @param $quality
+     * @param $sellIn
+     */
     public function __construct($quality, $sellIn)
     {
         $this->quality = $quality;
